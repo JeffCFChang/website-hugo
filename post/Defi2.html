@@ -1,0 +1,646 @@
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Defi - CURVE 協議 </title><style>
+
+---
+title: "test2"
+date: 2020-07-05T17:36:15+08:00
+draft: true
+---
+
+
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="dbc14de7-424a-408a-8ff5-78966a0ff47e" class="page sans"><header><h1 class="page-title">Defi - CURVE 協議 </h1><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesPerson"><path d="M9.625,10.8465 C8.91187,10.2891 8.12088,9.926 7,9.26013 L7,8.71938 C7.21175,8.47612 7.392,8.176 7.53813,7.83213 C7.94587,7.7315 8.3125,7.33425 8.3125,7 C8.3125,6.51788 8.1095,6.32713 7.8715,6.17137 C7.8715,6.15562 7.875,6.14162 7.875,6.125 C7.875,5.41362 7.4375,3.5 5.25,3.5 C3.0625,3.5 2.625,5.4145 2.625,6.125 C2.625,6.14162 2.6285,6.15562 2.6285,6.17137 C2.3905,6.32713 2.1875,6.51788 2.1875,7 C2.1875,7.33425 2.55413,7.7315 2.96187,7.833 C3.108,8.176 3.28825,8.47612 3.5,8.71938 L3.5,9.26013 C2.37912,9.92513 1.58812,10.2882 0.875,10.8465 C0.041125,11.4984 0,12.4688 0,14 L10.5,14 C10.5,12.4688 10.4589,11.4984 9.625,10.8465 Z M13.125,7.3465 C12.4119,6.78912 11.6209,6.426 10.5,5.76013 L10.5,5.21938 C10.7118,4.97613 10.892,4.676 11.0381,4.33213 C11.4459,4.2315 11.8125,3.83425 11.8125,3.5 C11.8125,3.01787 11.6095,2.82713 11.3715,2.67138 C11.3715,2.65562 11.375,2.64162 11.375,2.625 C11.375,1.91363 10.9375,0 8.75,0 C6.5625,0 6.125,1.9145 6.125,2.625 C6.125,2.64162 6.1285,2.65562 6.1285,2.67138 C6.11188,2.68275 6.09787,2.69588 6.08125,2.70725 C7.83212,3.066 8.59688,4.54825 8.72813,5.74787 C8.97575,6.00863 9.1875,6.39625 9.1875,7 C9.1875,7.60288 8.771,8.20312 8.18388,8.51462 C8.127,8.624 8.06662,8.729 8.00275,8.82962 C8.155,8.91537 8.30025,8.99675 8.44025,9.07463 C9.08075,9.4325 9.63375,9.74137 10.164,10.1561 C10.3022,10.2638 10.4204,10.3801 10.5289,10.4991 L14,10.4991 C14,8.96875 13.9589,7.99837 13.125,7.3465 Z"></path></svg></span>Assign</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GgFV1n53uWkK2-PIV58jHIos3xq7pd4sxG_Xoy-XA=s100" class="icon user-icon"/>p8711374 張</span></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M6.98643729,14.0000972 C5.19579566,14.0000972 3.40419152,13.3106896 2.04245843,11.9323606 C-0.681017475,9.21200555 -0.680780251,4.76029539 2.04293482,2.04012507 C4.76664406,-0.68004331 9.22427509,-0.68004331 11.9480135,2.04013479 C13.272481,3.36277455 14,5.1330091 14,6.99552762 C14,8.87640182 13.2721894,10.6285043 11.9480135,11.9509302 C10.5679344,13.3105924 8.77756503,14.0000972 6.98643729,14.0000972 Z M10.2705296,7.00913883 L10.2705296,8.46099754 L10.2705296,8.65543362 L10.076181,8.65543362 L8.6543739,8.65543362 L5.72059514,8.65543362 L5.52619796,8.65543362 L5.52619796,8.46099754 L5.52619796,5.52541044 L5.52619796,3.37946773 L5.52619796,3.18502193 L5.72059514,3.18502193 L7.17253164,3.18502193 L7.36692883,3.18502193 L7.36692883,3.37946773 L7.36692883,6.81467358 L10.076181,6.81467358 L10.2705296,6.81467358 L10.2705296,7.00913883 Z M12.1601539,6.99552762 C12.1601539,5.61697497 11.6190112,4.32597154 10.6393933,3.34769528 C8.63253764,1.34336744 5.35197452,1.34061603 3.34153136,3.33944106 C3.33868273,3.34219247 3.33607716,3.34494388 3.33322852,3.34769528 C1.32397148,5.35459953 1.32372842,8.63641682 3.33322852,10.6433794 C5.34295224,12.6504489 8.62968901,12.6504489 10.6393933,10.6433794 C11.6190112,9.66506426 12.1601539,8.37408027 12.1601539,6.99552762 Z"></path></svg></span>Date Created</th><td><time>@Jul 4, 2020 11:17 AM</time></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Due Date</th><td></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Priority</th><td><span class="selected-value select-value-color-red">High 🔥</span></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Property</th><td></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Property 1</th><td></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Status</th><td><span class="selected-value select-value-color-yellow">In Progress</span></td></tr></tbody></table></header><div class="page-body"><p id="df57e79b-0630-4570-8911-8b6313b81ca5" class="">消費卷用完是不是淡淡的哀傷呢，今天傑夫告訴妳們一個超過年化30%的方法</p><p id="a44fd281-a3bb-4fa2-88de-89a65b56d6a9" class="">去中心化產品在今年夏天引爆整個幣圈，成為最火紅的一種理財方式</p><p id="a8498d4c-8a59-4b84-a4a4-a3174713359c" class="">除了原本的Bitfinex理財外，這邊也是一個好選擇!</p><p id="dd1a0710-83c4-413f-9642-36a62d255b7f" class="">不用什麼技術背景，不用會員費，只要幾分鐘的操作就可以賺錢啦</p><p id="86e77f49-5165-478a-89f4-895b23eace0b" class="">
+</p><h1 id="4b6e5ba6-c598-4d99-b278-886070cd6189" class=""> <a href="https://www.curve.fi/susdv2/](https://www.curve.fi/susdv2/)">CurveFinance</a> 特點</h1><ul id="42066407-0353-4b31-b118-a94d3482bb1c" class="toggle"><li><details open=""><summary>運行於乙太網路上面</summary></details></li></ul><ul id="0cf70c51-5ccc-4e20-a342-91876d7df634" class="toggle"><li><details open=""><summary>智慧合約控制</summary></details></li></ul><ul id="fb7c659f-001f-4fdc-9f4e-0b131db038b1" class="toggle"><li><details open=""><summary>聚焦於穩定幣市場買賣</summary></details></li></ul><ul id="54e8b426-64db-4b63-9f99-d1d23e750bf0" class="toggle"><li><details open=""><summary>使用者也可以將錢存到裡面，加入生態系統，來賺取收入!</summary></details></li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7c73b853-4f39-432a-b07e-eb67af4aec57"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">在CurveFinance存款數中達到五千七百萬美元每日交易量千萬元以上，已經是DeFI市場中重要的穩定幣交換中心</div></figure><h1 id="ce522021-50e9-4289-9d73-897d16e22512" class="">前置作業</h1><ul id="a3f01c4d-a90a-4edb-9393-6d9f316ca32a" class="toggle"><li><details open=""><summary>已經會基本的加密貨幣轉帳</summary></details></li></ul><ul id="14c707f2-674b-4ef8-8855-77dafdaf676f" class="toggle"><li><details open=""><summary>有以下任何一種穩定幣 USDT、USDC、DAI、sUSD在錢包裡面。</summary></details></li></ul><p id="4fd68019-e560-470b-9dc3-5211f19c1330" class="">
+</p><p id="5a3ac9ee-8324-46e2-8269-1798583a53e2" class="">推薦使用CHROME 狐狸ERC20錢包，使用前請備份自己錢包的私鑰喔</p><figure id="5a60290d-6042-4c1b-a8f3-a1918f9dce46"><div class="source"><a href="https://metamask.io/">https://metamask.io/</a></div></figure><p id="14edfdcb-c762-41db-86f8-34d961a0aeb3" class="">
+</p><h1 id="a35786f8-a94c-402a-9588-b0625a8f7bd1" class="">交易所介紹</h1><p id="0116b4c7-4ff5-4a14-98a2-cc208282097c" class="">Curve 看似復古的網頁設計，實際上解決很多痛點，多個Curve 的穩定幣支持池，每個池子都有不同的利率以及不同用途</p><figure id="d21a4460-5f24-4f45-8047-10a0075c1adb" class="image"><a href="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled.png"><img style="width:1850px" src="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled.png"/></a></figure><p id="41028b78-241e-4aed-98bf-e63a56b7b9e1" class="">
+</p><p id="c8a0ed5b-8d47-41fb-95c1-67f366927f67" class="">在Curve 普及之前換穩定幣，都要轉入在轉出中心化交易所買賣，還要忍受手續費。Curve 透過簡單網頁的點擊，就能方便的地在各種不同幣種轉換，方便以及迅速。背後靠著是獨家的智慧合約演算法，例如輸入10000個USDT，可以得到10003個USDC，找出滑點最少對使用者最友善的價格，在幾秒鐘之內達成，錢幣的交換背後透過智慧合約來幫你自動轉換!</p><figure id="77b1d564-3e8d-4a39-86d6-b5a76f58881d" class="image"><a href="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%201.png"><img style="width:1370px" src="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%201.png"/></a></figure><h1 id="6afff87f-8bc7-4ebc-aadb-eada2673e1d9" class="">開始賺取你的被動收入</h1><p id="e9eb3959-c982-441c-909a-b820e06b80e2" class="">拉到網頁下面可以發現各種池的年化，利率的變化是動態的，我們找到最高APY優惠以及交易量穩定的穩定池來幫助我們賺取被動收入，每個池合作的合作夥伴跟利率都稍微有點不同，有興趣可以參考這一篇，<a href="https://guides.curve.fi/how-to-choose-the-right-curve-pool-for-you/">如何找到理想的Curve Pool</a></p><p id="5d59cb80-b3b5-417f-95de-454f115a844d" class="">
+</p><p id="00932adf-6433-429a-88d9-cfce9ecfe10c" class="">🤩 我們發現 <strong>四號池 sUSD</strong> 年化6.26% 配合額外獲得年化21.03%</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="02a7336d-e507-4ada-924d-20f883a68a24"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">目前提供流動性還可以獲得即將分發的curve token，如果curve token後續暴漲21.3%+6.2% + ? %，超過30%呢，真香! </div></figure><figure id="2814a6bb-2fbe-4e18-9780-07fdfff29313" class="image"><a href="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%202.png"><img style="width:1856px" src="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%202.png"/></a></figure><h1 id="0bafed03-72c9-4251-85ae-d3ed2c7b6138" class="">開始存入金額</h1><p id="bf067299-8a72-4525-ab1a-e55c35fa1455" class="">現在回到首頁，我們現在要將我們的錢透過metamask 透過智慧合約打進去，接下來有幾個步驟</p><ol id="2c540f19-15b2-44f0-9faf-bb8136bae1ab" class="numbered-list" start="1"><li>選取剛收益最高的 sUSD池</li></ol><ol id="a2063a36-e444-4748-979c-d821c7e659d2" class="numbered-list" start="2"><li>點選存款 (如果要取出點選提款Withdraw)</li></ol><ol id="00fd3211-5c73-4d4d-8196-b89618e68304" class="numbered-list" start="3"><li>如果你的 metamask已經有穩定幣，這邊輸入你要存入多少錢</li></ol><ol id="eae1be11-8821-4ea1-beda-2ad88264e8bd" class="numbered-list" start="4"><li>按存入並開始計息，狐狸會彈跳一些智慧合約。確認視窗後按確認，完成，躺著收錢!</li></ol><figure id="3c6f0952-28e3-44d3-8053-2bfa19035c63" class="image"><a href="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%203.png"><img style="width:2003px" src="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%203.png"/></a></figure><p id="315f22b2-147c-4b9c-ba59-ae19b3e17281" class="">
+</p><p id="541a75c6-b767-442b-91ed-bd0be54a7c46" class="">等傳輸完成後，網頁下方有收益統計，舉例之前我已經放了2393美金進去</p><p id="f3c827e8-db75-4cb1-b70e-b9fdc53b3984" class="">可以看見幫我拆分成DAI、USDC、USDT、sUSD，因為穩定幣是有波動的，這邊總幣加成為2387</p><figure id="f562151b-2ab2-49fc-9033-95d017c53e77" class="image"><a href="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%204.png"><img style="width:1550px" src="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%204.png"/></a></figure><p id="0a97cde4-cf35-452d-acee-23ff19f51427" class="">
+</p><h2 id="402aeab2-2f1b-47ce-af68-211e7e03193d" class="">計算收益</h2><p id="c7169a62-9cc3-4674-9c95-111fe48ddc8a" class="">這邊也能看到實時收益，期望收到的SNX這個幣，配合現在的幣價一禮拜約9.8美元</p><p id="c5073954-fd4d-432d-a45f-6ffab5098387" class="">一個月預估為9.8* 4個禮拜 = 39.2美元；一年39.2 * 12 = 470.4美元，470/2387約略等於他網頁的20%，更重要的是我們還沒將上原本年化 6% ，以及還沒映射出的 Curve幣 !!!</p><figure id="7b68e44b-2378-4fc0-af7d-230587b8def5" class="image"><a href="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%205.png"><img style="width:895px" src="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%205.png"/></a></figure><p id="5681a7c3-67e1-4d7f-9f5b-170e40d2c4ff" class="">
+</p><h2 id="61846dcd-d17d-4f3d-bf5f-6f44c0b502a2" class="">拿到合作夥伴的獎勵</h2><p id="f90ff315-0aa3-40c2-9753-c7f42d07202f" class="">等等你以為這樣就結束了嗎?  還有最重要的一步，因為您可以抵押您的Curve LP（流動性提供者）令牌並賺取SNX，接下來到Mintr上（<a href="https://mintr.synthetix.io/">https://mintr.synthetix.io/</a>），選取<strong> CURVEPOOL sUSD</strong></p><figure id="3d218582-9b3a-4353-8378-6b4a13617a6b" class="image"><a href="https://miro.medium.com/max/1742/1*hoV2RF6uMYg9og405q3tbw.png"><img src="https://miro.medium.com/max/1742/1*hoV2RF6uMYg9og405q3tbw.png"/></a></figure><p id="48a57d88-3d39-4a7c-a04f-b9f5351ebb85" class="">
+</p><p id="fb226cd7-068d-4ca6-b309-a57f609f6957" class="">點選 <strong>Stake Token</strong>，開始計息，注意這邊拿到的獎勵是會分發，你要點選 <strong>Clain Rewards</strong>，但這個動作是要收取手續費的，點太頻繁手續費高過於獎勵就不划算了，建議累積一筆再點一次，如果最後要退出這個平台可以點選 <strong>EXIT: CLAIN &amp; UNSTAKE</strong></p><figure id="f240f045-42ad-434c-8767-cc690990da52" class="image"><a href="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%206.png"><img style="width:1398px" src="Defi%20CURVE%20d21a44605f244f45804710a0075c1adb/Untitled%206.png"/></a></figure><p id="8b72f109-576d-480e-b959-5f443bb0f65f" class="">
+</p><p id="51c50e0f-6cca-4a40-ac4b-94a86193e51b" class="">因為這個有時間限定的從202006619 起連續10個禮拜，都有這樣的活動優惠，要趕緊把握一下收益，回顧一下我們這些操作獲得那些收益，並享受被動收入吧 !</p><p id="c3aed13c-9c85-4614-a766-3913e973de90" class="">
+</p><ul id="28b91f42-0bfe-47f9-854c-3e6c065abc0d" class="bulleted-list"><li>穩定的年化報酬率</li></ul><ul id="5b7f58fb-9554-43b3-be75-08fc524eb0dc" class="bulleted-list"><li>CRV (to be released Curve token)</li></ul><ul id="814f249a-ae1f-413e-b16f-78356c1a0def" class="bulleted-list"><li>SNX</li></ul><figure id="c24dbcb5-0aa0-4aae-b4a9-e8badea2acd2"><a href="https://blog.synthetix.io/btc-yield-farming-pool/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">New BTC Yield Farming Pool from Synthetix, Curve, and Ren</div><div class="bookmark-description">We are pleased to announce that Synthetix, Curve, and Ren have collaborated to launch a new incentivized pool to provide liquidity for tokenized BTC on Ethereum. Our goal is to create the most liquid Ethereum-based BTC pool available to offer traders access to the lowest slippage for trades between sBTC, renBTC, and WBTC.</div></div><div class="bookmark-href"><img src="https://blog.synthetix.io/favicon.png" class="icon bookmark-icon"/>https://blog.synthetix.io/btc-yield-farming-pool/</div></div><img src="https://blog.synthetix.io/content/images/2020/06/BTC-Yield-Farming-Pool.png" class="bookmark-image"/></a></figure><p id="89099ec0-64e1-4c04-b270-e8c810de782b" class="">
+</p><p id="8d71bcc1-6fbf-4f4c-91dd-3b21ccc32f38" class="">
+</p><p id="a7409c79-6dc8-47eb-8fbb-f7aafeda15fb" class="">
+</p><p id="e2e3dc31-446d-456e-ac39-b1fe7400b0af" class="">Best Regards,</p><p id="694f9e8b-8cae-41c0-866b-715c53a10efc" class="">Mr.chefu</p><p id="1866e367-2845-43c8-8b0b-efaf894bc7fc" class=""><a href="https://t.me/taiwanFTB">https://t.me/taiwanFTB</a></p></div></article></body></html>
